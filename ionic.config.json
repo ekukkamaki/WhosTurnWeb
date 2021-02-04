@@ -1,0 +1,7 @@
+{
+  "name": "WhosTurn",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
