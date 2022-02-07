@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "677579667249",
+    "project_id": "whosturn-c2880",
+    "storage_bucket": "whosturn-c2880.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:677579667249:android:284cbaf8995516b4ed2210",
+        "android_client_info": {
+          "package_name": "com.esa.whosturn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "677579667249-k2jr3v4gv85jir5bd47ir0j62k7hjui6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuG20aurl1z-XZcUft-G4swDwYCoo_Rac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "677579667249-k2jr3v4gv85jir5bd47ir0j62k7hjui6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,8 +1,5 @@
 <template>
-  <ion-button expand="full" color="secondary" size="large" @click="RandomReader()"
-    >Arvonta</ion-button
-  >
-  <read-history></read-history>
+  <!-- <read-history></read-history> -->
   <ion-loading
     :is-open="loading"
     cssClass="my-custom-class"
@@ -10,40 +7,45 @@
     :duration="timeout"
   >
   </ion-loading>
-  <div id="container">
+  <IonContent class="dark">
     <div v-for="party in parties" :key="party.Reader">
-      <div v-if="party.Reader === 'Isi'" style="padding-bottom: 100px;">
+      <div v-if="party.Reader === 'Isi'">
         <strong> Isin vuoro lukea:</strong>
-        <p style="padding-top: 30px;">
-          <span style="font-size: 70px;" v-if="party.Listener">
-            {{ party.Listener?.FirstName + ' ' + party.Listener?.LastName }}
+        <p style="padding-top: 20px">
+          <span style="font-size: 30px" v-if="party.Listener">
+            {{ party.Listener?.FirstName + " " + party.Listener?.LastName }}
           </span>
           <span v-else>??</span>
         </p>
       </div>
       <div v-if="party.Reader === 'Äiti'">
         <strong> Äitin vuoro lukea:</strong>
-        <p style="padding-top: 30px;">
-          <span style="font-size: 70px;" v-if="party.Listener">
-            {{ party.Listener?.FirstName + ' ' + party.Listener?.LastName }}
+        <p style="padding-top: 20px">
+          <span style="font-size: 30px" v-if="party.Listener">
+            {{ party.Listener?.FirstName + " " + party.Listener?.LastName }}
           </span>
           <span v-else>??</span>
         </p>
       </div>
     </div>
-
-    <section style="padding-top: 50px;">
+    <section style="padding-top: 50px">
       <header>Meneekö homma näin?</header>
       <ion-button color="success" size="medium">Kyllä</ion-button>
       <ion-button color="danger" size="medium">Ei</ion-button>
     </section>
-  </div>
+    <ion-button
+      expand="block"
+      color="secondary"
+      size="small"
+      @click="RandomReader()"
+      >Arvonta</ion-button
+    >
+  </IonContent>
 </template>
 
 <script lang="ts">
-import { reactive, ref } from 'vue';
-import { IonButton, IonLoading } from '@ionic/vue';
-import ReadHistory from './ReadHistory.vue';
+import { reactive, ref } from "vue";
+import { IonButton, IonLoading, IonContent } from "@ionic/vue";
 interface Parties {
   Reader: string;
   Listener: Child | null;
@@ -54,29 +56,29 @@ interface Child {
 }
 
 export default {
-  name: 'ExploreContainer',
+  name: "ExploreContainer",
   props: {
     name: String,
   },
   components: {
     IonButton,
     IonLoading,
-    ReadHistory,
+    IonContent,
   },
   setup() {
     const loading = ref(false);
     const childs: Child[] = [
-      { FirstName: 'Lumi', LastName: 'Kukkamäki' },
-      { FirstName: 'Lenni', LastName: 'Kukkamäki' },
+      { FirstName: "Lumi", LastName: "Kukkamäki" },
+      { FirstName: "Lenni", LastName: "Kukkamäki" },
     ];
 
     const parties: Parties[] = reactive([
       {
-        Reader: 'Isi',
+        Reader: "Isi",
         Listener: null,
       },
       {
-        Reader: 'Äiti',
+        Reader: "Äiti",
         Listener: null,
       },
     ]);
@@ -125,9 +127,9 @@ export default {
   text-decoration: none;
 }
 .red {
-  color: 'red';
+  color: "red";
 }
 .blue {
-  color: 'blue';
+  color: "blue";
 }
 </style>

@@ -1,12 +1,10 @@
 import { ref, onMounted, watch } from 'vue';
 import {
-  Plugins,
-  CameraResultType,
-  CameraSource,
-  CameraPhoto,
   Capacitor,
-  FilesystemDirectory,
 } from '@capacitor/core';
+import { Filesystem, Directory } from '@capacitor/filesystem'
+import { Camera, CameraResultType, CameraSource, Photo as CapacitorPhoto } from '@capacitor/camera';
+import { Storage } from '@capacitor/storage';
 
 import { isPlatform } from '@ionic/vue';
 
@@ -16,7 +14,7 @@ export interface Photo {
 }
 
 export function usePhotoGallery() {
-  const { Camera, Filesystem, Storage } = Plugins;
+
   const photos = ref<Photo[]>([]);
   const PHOTO_STORAGE = 'photos';
 
@@ -38,7 +36,7 @@ export function usePhotoGallery() {
       for (const photo of photosInStorage) {
         const file = await Filesystem.readFile({
           path: photo.filepath,
-          directory: FilesystemDirectory.Data,
+          directory: Directory.Data,
         });
         // Web platform only: Load the photo as base64 data
         photo.webviewPath = `data:image/jpeg;base64,${file.data}`;
@@ -60,7 +58,7 @@ export function usePhotoGallery() {
       reader.readAsDataURL(blob);
     });
 
-  const savePicture = async (photo: CameraPhoto, fileName: string): Promise<Photo> => {
+  const savePicture = async (photo: CapacitorPhoto, fileName: string): Promise<Photo> => {
     let base64Data: string;
     // "hybrid" will detect mobile - iOS or Android
     if (isPlatform('hybrid')) {
@@ -77,7 +75,7 @@ export function usePhotoGallery() {
     const savedFile = await Filesystem.writeFile({
       path: fileName,
       data: base64Data,
-      directory: FilesystemDirectory.Data,
+      directory: Directory.Data,
     });
 
     if (isPlatform('hybrid')) {

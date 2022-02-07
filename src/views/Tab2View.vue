@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { camera, trash, close } from 'ionicons/icons';
+import { camera, trash, close } from "ionicons/icons";
 import {
   IonPage,
   IonHeader,
@@ -38,12 +38,12 @@ import {
   IonRow,
   IonCol,
   IonImg,
-} from '@ionic/vue';
+} from "@ionic/vue";
 
-import { usePhotoGallery, Photo } from '@/composables/usePhotoGallery';
+import { usePhotoGallery, Photo } from "@/composables/usePhotoGallery";
 
 export default {
-  name: 'Tab2',
+  name: "Tab2View",
   components: {
     IonPage,
     IonHeader,
