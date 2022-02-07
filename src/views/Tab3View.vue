@@ -7,9 +7,8 @@
     </ion-header>
     <ion-content :fullscreen="true">
       <div class="image-page">
-        <div class="image-page-person__container">
-          <h3>Lapset</h3>
-
+        <h3 class="align-center">Lapset</h3>
+        <div class="align-center">
           <!-- <ion-img :src="photos[0].webviewPath"></ion-img> -->
           <ion-grid>
             <ion-row>
@@ -23,8 +22,9 @@
             </ion-row>
           </ion-grid>
         </div>
-        <div class="image-page-person__container">
-          <h3>Aikuiset</h3>
+
+        <h3 class="align-center">Aikuiset</h3>
+        <div class="align-center">
           <ion-grid>
             <ion-row>
               <ion-col>
@@ -84,6 +84,10 @@ export default {
 
 <style lang="scss" scoped>
 .image-page {
+  // display: flex;
+  // justify-content: center;
+}
+.align-center {
   display: flex;
   justify-content: center;
 }

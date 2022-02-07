@@ -23,13 +23,13 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
-//import VueFeather from 'vue-feather';
+import VueFeather from 'vue-feather';
 
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
 
-//app.component(VueFeather.name ?? "", VueFeather);
+app.component(VueFeather.name ?? "", VueFeather);
 
 router.isReady().then(() => {
   app.mount('#app');
