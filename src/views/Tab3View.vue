@@ -5,57 +5,41 @@
         <ion-title>Kuvat</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content :fullscreen="true">
-      <div class="image-page">
-        <h3 class="align-center">Lapset</h3>
-        <div class="align-center">
-          <!-- <ion-img :src="photos[0].webviewPath"></ion-img> -->
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <card :cardHeader="'Lenni'"></card>
-                <!-- <div v-if="photos && photos[0]">
-              <ion-img :src="photos[0].webviewPath"></ion-img>
-            </div> -->
-              </ion-col>
-              <ion-col><card :cardHeader="'Lumi'"></card></ion-col>
-            </ion-row>
-          </ion-grid>
+    <div class="image-page">
+      <div class="image-page__section">
+        <div class="image-page__header">
+          <ion-img
+            src="/assets/child-image.jpeg"
+            class="image-page__header--image"
+          ></ion-img>
+          <h2 class="image-page__header--text">Lapset</h2>
         </div>
-
-        <h3 class="align-center">Aikuiset</h3>
-        <div class="align-center">
-          <ion-grid>
-            <ion-row>
-              <ion-col>
-                <card :cardHeader="'Äiti'"></card>
-                <!-- <div v-if="photos && photos[0]">
-              <ion-img :src="photos[0].webviewPath"></ion-img>
-            </div> -->
-              </ion-col>
-              <ion-col><card :cardHeader="'Isi'"></card></ion-col>
-            </ion-row>
-          </ion-grid>
+        <div class="image-page__section-container">
+          <card :cardHeader="'Lenni'"></card>
+          <card :cardHeader="'Lumi'"></card>
         </div>
-
-        <!-- {{ firstImage.webviewPath }} -->
       </div>
-    </ion-content>
+      <div class="image-page__section">
+        <div class="image-page__header">
+          <ion-img
+            src="/assets/adult-image.jpeg"
+            class="image-page__header--image"
+          ></ion-img>
+          <h2 class="image-page__header--text">Aikuiset</h2>
+        </div>
+        <div class="image-page__section-container">
+          <card :cardHeader="'Äiti'"></card>
+          <card :cardHeader="'Isi'"></card>
+        </div>
+      </div>
+
+      <!-- {{ firstImage.webviewPath }} -->
+    </div>
   </ion-page>
 </template>
 
 <script lang="ts">
-import {
-  IonPage,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonImg,
-  IonCol,
-  IonGrid,
-  IonRow,
-} from "@ionic/vue";
+import { IonPage, IonHeader, IonToolbar, IonTitle, IonImg } from "@ionic/vue";
 import { usePhotoGallery } from "@/composables/usePhotoGallery";
 import { ref } from "vue";
 import Card from "@/atoms/CardElement.vue";
@@ -66,12 +50,9 @@ export default {
     IonHeader,
     IonToolbar,
     IonTitle,
-    IonContent,
     IonPage,
-    IonCol,
-    IonGrid,
-    IonRow,
     Card,
+    IonImg,
   },
   setup() {
     const { photos } = usePhotoGallery();
@@ -86,7 +67,43 @@ export default {
 .image-page {
   // display: flex;
   // justify-content: center;
+  margin: 20px auto;
+  &__section {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding-top: 20px;
+    &:first-child {
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgb(28, 29, 26);
+    }
+    &-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    &--image {
+      width: 80px;
+    }
+    &--text {
+      text-orientation: upright;
+      writing-mode: vertical-rl;
+    }
+  }
 }
+.ion-page {
+  justify-content: inherit;
+  margin-left: 10px;
+  margin-right: 10px;
+  overflow-y: auto;
+}
+
 .align-center {
   display: flex;
   justify-content: center;

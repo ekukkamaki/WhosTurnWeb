@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h4>{{ props.cardHeader }}</h4>
     <div class="card-container" @click="addPersonImage(props.cardHeader)">
       <div class="content-align-center">
         <ion-img :src="imageUrl"></ion-img>
@@ -12,6 +11,9 @@
           :stroke="'#953737'"
           :size="'50px'"
         ></vue-feather>
+      </div>
+      <div class="left-right-corner">
+        <h2>{{ props.cardHeader }}</h2>
       </div>
     </div>
   </div>
@@ -56,7 +58,7 @@ export default {
 <style lang="scss" scoped>
 .card-container {
   width: 100%;
-  max-width: 300px;
+  max-width: 600px;
   position: relative;
   /* border: black solid 1px; */
 }
@@ -70,6 +72,15 @@ export default {
   position: absolute;
   top: 0px;
   z-index: 10;
+}
+.left-right-corner {
+  position: absolute;
+  bottom: 0px;
+  z-index: 10;
+  right: 20px;
+  & > h2 {
+    color: lightpink;
+  }
 }
 </style>
 
